@@ -10485,27 +10485,30 @@ var LogIn = function (_Component) {
 
   _createClass(LogIn, [{
     key: 'handleSubmit',
-    value: function handleSubmit(evt) {
-      evt.preventDefault();
-
-      axios.post('/login', {
+    value: function handleSubmit(event) {
+      console.log("inside handleSubmit for log-in page");
+      event.preventDefault();
+      axios.post('http://localhost:3000/login', {
         username: this.state.username,
         password: this.state.password
       }).then(function (response) {
         console.log(response);
-        cb(this.state.username);
       }).catch(function (error) {
         console.log(error);
       });
+
+      this.props.cb(this.state.username);
     }
   }, {
     key: 'handleUsername',
     value: function handleUsername(event) {
+      console.log("inside handleUsername " + event.target.value);
       this.setState({ username: event.target.value });
     }
   }, {
     key: 'handlePassword',
     value: function handlePassword(event) {
+      console.log("inside handlePassword " + event.target.value);
       this.setState({ password: event.target.value });
     }
   }, {
@@ -10515,18 +10518,13 @@ var LogIn = function (_Component) {
         'div',
         null,
         _react2.default.createElement(
-          'h1',
-          null,
-          'Welcome to Chatterbox!'
-        ),
-        _react2.default.createElement(
           'p',
           null,
           'Please register to use our app.'
         ),
         _react2.default.createElement(
           'form',
-          { onSubmit: this.preventSubmit },
+          { onSubmit: this.handleSubmit },
           _react2.default.createElement(
             'label',
             null,
@@ -10537,7 +10535,7 @@ var LogIn = function (_Component) {
           _react2.default.createElement(
             'label',
             null,
-            'Username:'
+            'Password:'
           ),
           _react2.default.createElement('input', { value: this.state.password, onChange: this.handlePassword, type: 'password', placeholder: 'Enter Password', required: true }),
           _react2.default.createElement(
@@ -23754,28 +23752,19 @@ var App = function (_Component) {
       username: "",
       msgs: []
     };
-    _this.sendToServer = _this.sendToServer.bind(_this);
-    _this.authenticateCred = _this.authenticateCred.bind(_this);
+    _this.saveMessage = _this.saveMessage.bind(_this);
+    _this.getUsername = _this.getUsername.bind(_this);
     return _this;
   }
 
-  /*
-    authenticateCred() {
-      axios.post('/login', {
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  
-    }
-  */
-
   _createClass(App, [{
+    key: 'getUsername',
+    value: function getUsername(name) {
+      console.log("inside getUsername");
+      console.log("name is " + name);
+      this.setState({ username: name });
+    }
+  }, {
     key: 'saveMessage',
     value: function saveMessage(message) {
       //make axios call
@@ -23805,7 +23794,14 @@ var App = function (_Component) {
           null,
           'Welcome to Chatterbox!'
         ),
-        !this.state.username ? _react2.default.createElement(_logIn2.default, null) : _react2.default.createElement(_msgForm2.default, { cb: this.saveMessage })
+        this.state.username ? _react2.default.createElement(
+          'p',
+          null,
+          'Hello ',
+          this.state.username,
+          '! What\'s on your mind today?'
+        ) : _react2.default.createElement('br', null),
+        this.state.username ? _react2.default.createElement(_msgForm2.default, { cb: this.saveMessage }) : _react2.default.createElement(_logIn2.default, { cb: this.getUsername })
       );
     }
   }]);

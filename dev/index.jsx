@@ -13,26 +13,16 @@ class App extends Component {
       username: "",
       msgs: []
     }
-    this.sendToServer = this.sendToServer.bind(this);
-    this.authenticateCred = this.authenticateCred.bind(this);
+    this.saveMessage = this.saveMessage.bind(this);
+    this.getUsername = this.getUsername.bind(this);
   }
 
-/*
-  authenticateCred() {
-    axios.post('/login', {
-      username: this.state.username,
-      password: this.state.password
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
+  getUsername(name){
+    console.log("inside getUsername");
+    console.log("name is " + name)
+    this.setState({ username: name });
   }
-*/
-  
+
   saveMessage(message) {
     //make axios call
     //to send msg to DB
@@ -55,13 +45,12 @@ class App extends Component {
 
   }
 
-  render(){
+  render() {
     return(
       <div>
-      <h1>Welcome to Chatterbox!</h1>
-
-      {!this.state.username ? (<LogIn />) :
-      (<MsgForm cb={this.saveMessage} />)}
+        <h1>Welcome to Chatterbox!</h1>
+        {this.state.username ? (<p>Hello {this.state.username}! What's on your mind today?</p>) : (<br />)}
+        {this.state.username ? (<MsgForm cb={this.saveMessage} />) : (<LogIn cb={this.getUsername} />)}
       </div>
 
     )

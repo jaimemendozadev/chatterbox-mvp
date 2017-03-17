@@ -16,43 +16,45 @@ class LogIn extends Component {
     this.handlePassword = this.handlePassword.bind(this);
   }
 
-  handleSubmit(evt){
-    evt.preventDefault();
-
-    axios.post('/login', {
+  handleSubmit(event){
+    console.log("inside handleSubmit for log-in page");
+    event.preventDefault();
+    axios.post('http://localhost:3000/login', {
       username: this.state.username,
       password: this.state.password
     })
     .then(function (response) {
       console.log(response);
-      cb(this.state.username);
     })
     .catch(function (error) {
       console.log(error);
     });
-    
+
+    this.props.cb(this.state.username);
+
 
   }
 
   handleUsername(event) {
+    console.log("inside handleUsername " + event.target.value)
     this.setState({username: event.target.value});
   }
 
   handlePassword(event) {
+    console.log("inside handlePassword " + event.target.value)
     this.setState({password: event.target.value});
   }
 
   render() {
     return(
       <div>
-      <h1>Welcome to Chatterbox!</h1>
       <p>Please register to use our app.</p>
-      <form onSubmit={this.preventSubmit}>
+      <form onSubmit={this.handleSubmit}>
       
         <label>Username:</label>
         <input value={this.state.name} onChange={this.handleUsername} name="username" required /><br />
 
-        <label>Username:</label>
+        <label>Password:</label>
         <input value={this.state.password} onChange={this.handlePassword} type="password" placeholder="Enter Password" required />
 
         <button type="submit">Submit</button>
