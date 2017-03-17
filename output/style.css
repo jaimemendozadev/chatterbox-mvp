@@ -1,0 +1,20 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2em;
+}
+
+input[type=text] {
+    width: 50%;
+}
+
+form {
+  width: 50%;
+  height: 35%;
+  margin: 2em auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 2em;
+}
