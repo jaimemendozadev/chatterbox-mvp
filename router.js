@@ -13,6 +13,13 @@ router.get('/public', function(req, res){
    
 });
 
+router.post('/login', function(req, res){
+
+  console.log("inside /login POST");
+  console.log(req);
+
+});
+
 router.post('/public', function(req, res){
   console.log("inside /public POST");
   console.log(req.body);
