@@ -15,8 +15,6 @@ router.get('/public', function(req, res){
 
 router.post('/login', controller.createUser);
 
-
-
 router.post('/public', controller.saveTheMessage);
 
 module.exports = router;

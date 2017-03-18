@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var UsersSchema = new Schema({
     username: {type: String, unique: true, lowercase: true},
     password: String,
+    timeline: [{ type: Schema.Types.ObjectId, ref: 'PublicChatRoom' }]
 });
 
 
@@ -21,7 +22,6 @@ UsersSchema.pre('save', function(next) {
   bcrypt.genSalt(10, function(err, salt) {
     if (err) { return next(err); }
 
-
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) { return next(err); }      
       user.password = hash;
@@ -32,10 +32,7 @@ UsersSchema.pre('save', function(next) {
 });
 
 
-var MessagesSchema = new Schema({
-    username: {type: String, unique: true, lowercase: true},
-    password: String,
-});
+
 
 
 

@@ -10667,9 +10667,9 @@ var MsgForm = function (_Component) {
       event.preventDefault();
 
       axios.post('/public', {
-        username: this.state.username,
         message: this.state.msgToSend,
-        date: this.getTheDate()
+        date: this.getTheDate(),
+        username: this.state.username
       }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
