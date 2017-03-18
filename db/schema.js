@@ -1,3 +1,5 @@
+//why do I have to require the DB inside the schema?
+const db = require('./db.js');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
  
@@ -8,6 +10,5 @@ const UserSchema = new Schema({
 });
 
 
-module.exports = {
-  UserSchema: UserSchema
-}
+module.exports = mongoose.model('User', UserSchema );
+
