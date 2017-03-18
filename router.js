@@ -18,4 +18,6 @@ router.get('/public', function(req, res){
 
 router.post('/public', controller.saveTheMessage);
 
+router.get('/feed', controller.getTheFeed);
+
 module.exports = router;

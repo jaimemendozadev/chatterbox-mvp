@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import LogIn from './components/log-in.jsx';
+import UserLogIn from './components/user-log-in.jsx';
 import MsgForm from './components/msg-form.jsx';
 import Feed from './components/feed.jsx';
-const axios = require('axios');
 
 
 class App extends Component {
@@ -33,7 +32,7 @@ class App extends Component {
       <div>
         <h1>Welcome to Chatterbox!</h1>
         {this.state.username ? (<p>Hello {this.state.username}! What's on your mind today?</p>) : (<br />)}
-        {this.state.username ? (<MsgForm cb={this.sendMsgToDB} user={this.state.username}/>) : (<LogIn cb={this.getUsername} />)}
+        {this.state.username ? (<MsgForm cb={this.sendMsgToDB} user={this.state.username}/>) : (<UserLogIn cb={this.getUsername} />)}
         {this.state.username ? (<Feed />) : <br />}
       </div>
 

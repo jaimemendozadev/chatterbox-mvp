@@ -1,5 +1,5 @@
 //why do I have to require the DB inside the schema?
-const db = require('./db.js');
+//const db = require('./db.js');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;

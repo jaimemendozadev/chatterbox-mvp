@@ -33,6 +33,20 @@ var saveTheMessage = function(req, res) {
   
 }
 
+var getTheFeed = function(req, res){
+  console.log("Inside getTheFeed");
+
+  PublicCRMsg.find({}, function(err, feed){
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(feed);
+    }
+  });
+
+}
+
 module.exports = {
-  saveTheMessage: saveTheMessage
+  saveTheMessage: saveTheMessage,
+  getTheFeed: getTheFeed
 }
