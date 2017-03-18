@@ -8,7 +8,7 @@ class MsgForm extends Component {
     super(props);
     this.state = {
       username: this.props.user,
-      msgToSend: ""
+      msgToSend: "Message"
     };
     this.handleMsgState = this.handleMsgState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,10 +64,9 @@ class MsgForm extends Component {
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
-        <label>Send a Message:</label>
         <input value={this.state.msgToSend} onChange={this.handleMsgState} type="text" />
         
-        <input type="submit" value="Submit" />
+        {/*<input type="submit" value="Submit" />*/}
       </form>
     )
   }

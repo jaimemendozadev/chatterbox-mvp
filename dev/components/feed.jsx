@@ -48,7 +48,7 @@ class Feed extends Component {
   render() {
     const mainFeed = this.state.feed;
     return(
-      <div>
+      <div className="feed">
         <h1>What the world is saying...</h1>
         {mainFeed.map((post)=><Msg key={post["_id"]} content={post} />)}
 

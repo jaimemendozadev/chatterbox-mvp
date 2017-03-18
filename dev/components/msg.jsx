@@ -6,9 +6,9 @@ function Msg({content}) {
   //console.log("the props are " + JSON.stringify(props.content));  
   return(
     <div className="tlMessage">
-      <span className="userInfo">{content["username"]} {content["date"]}</span><br />
+      <span className="userInfo">{content["username"]} {content["date"]}</span>
 
-      {content["message"]}
+      <p>{content["message"]}</p>
     </div>
 
 

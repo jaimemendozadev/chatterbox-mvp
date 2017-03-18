@@ -6,7 +6,7 @@ class UserLogIn extends Component {
   constructor(props){
     super(props)
     this.state = {
-      username: "",
+      name: "Username",
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,30 +16,29 @@ class UserLogIn extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    this.props.cb(this.state.username);
+    this.props.cb(this.state.name);
 
   }
 
 
   handleUsername(event) {
-    console.log("inside handleUsername " + event.target.value)
-    this.setState({username: event.target.value});
+    this.setState({name: event.target.value});
   }
 
 
 
   render() {
     return(
-      <div>
+      <div className="userLogIn">
       
       <p>What's your name? <br />
       Please enter a username to start using our app.</p>
       <form onSubmit={this.handleSubmit}>
       
-        <label>Username:</label>
+        {/*<label>Username:</label>*/}
         <input value={this.state.name} onChange={this.handleUsername} name="username" required />
 
-        <button type="submit">Submit</button>
+        {/*<button type="submit">Submit</button>*/}
       </form>
       </div>
 

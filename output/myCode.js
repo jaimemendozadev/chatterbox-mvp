@@ -10510,7 +10510,7 @@ var Feed = function (_Component) {
       var mainFeed = this.state.feed;
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'feed' },
         _react2.default.createElement(
           'h1',
           null,
@@ -10569,7 +10569,7 @@ var MsgForm = function (_Component) {
 
     _this.state = {
       username: _this.props.user,
-      msgToSend: ""
+      msgToSend: "Message"
     };
     _this.handleMsgState = _this.handleMsgState.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -10626,13 +10626,7 @@ var MsgForm = function (_Component) {
       return _react2.default.createElement(
         'form',
         { onSubmit: this.handleSubmit },
-        _react2.default.createElement(
-          'label',
-          null,
-          'Send a Message:'
-        ),
-        _react2.default.createElement('input', { value: this.state.msgToSend, onChange: this.handleMsgState, type: 'text' }),
-        _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+        _react2.default.createElement('input', { value: this.state.msgToSend, onChange: this.handleMsgState, type: 'text' })
       );
     }
   }]);
@@ -10680,7 +10674,7 @@ var UserLogIn = function (_Component) {
     var _this = _possibleConstructorReturn(this, (UserLogIn.__proto__ || Object.getPrototypeOf(UserLogIn)).call(this, props));
 
     _this.state = {
-      username: ""
+      name: "Username"
     };
 
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -10693,20 +10687,19 @@ var UserLogIn = function (_Component) {
     value: function handleSubmit(event) {
       event.preventDefault();
 
-      this.props.cb(this.state.username);
+      this.props.cb(this.state.name);
     }
   }, {
     key: 'handleUsername',
     value: function handleUsername(event) {
-      console.log("inside handleUsername " + event.target.value);
-      this.setState({ username: event.target.value });
+      this.setState({ name: event.target.value });
     }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'userLogIn' },
         _react2.default.createElement(
           'p',
           null,
@@ -10717,17 +10710,7 @@ var UserLogIn = function (_Component) {
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit },
-          _react2.default.createElement(
-            'label',
-            null,
-            'Username:'
-          ),
-          _react2.default.createElement('input', { value: this.state.name, onChange: this.handleUsername, name: 'username', required: true }),
-          _react2.default.createElement(
-            'button',
-            { type: 'submit' },
-            'Submit'
-          )
+          _react2.default.createElement('input', { value: this.state.name, onChange: this.handleUsername, name: 'username', required: true })
         )
       );
     }
@@ -11605,8 +11588,11 @@ function Msg(_ref) {
       " ",
       content["date"]
     ),
-    _react2.default.createElement("br", null),
-    content["message"]
+    _react2.default.createElement(
+      "p",
+      null,
+      content["message"]
+    )
   );
 }
 
@@ -23902,8 +23888,6 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'getUsername',
     value: function getUsername(name) {
-      console.log("inside getUsername");
-      console.log("name is " + name);
       this.setState({ username: name });
     }
   }, {
@@ -23914,19 +23898,23 @@ var App = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'userLogIn' },
         _react2.default.createElement(
-          'h1',
+          'header',
           null,
-          'Welcome to Chatterbox!'
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Welcome to Chatterbox!'
+          ),
+          this.state.username ? _react2.default.createElement(
+            'p',
+            null,
+            'Hello ',
+            this.state.username,
+            '! What\'s on your mind today?'
+          ) : _react2.default.createElement('br', null)
         ),
-        this.state.username ? _react2.default.createElement(
-          'p',
-          null,
-          'Hello ',
-          this.state.username,
-          '! What\'s on your mind today?'
-        ) : _react2.default.createElement('br', null),
         this.state.username ? _react2.default.createElement(_msgForm2.default, { cb: this.sendMsgToDB, user: this.state.username }) : _react2.default.createElement(_userLogIn2.default, { cb: this.getUsername }),
         this.state.username ? _react2.default.createElement(_feed2.default, null) : _react2.default.createElement('br', null)
       );

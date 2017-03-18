@@ -16,8 +16,6 @@ class App extends Component {
   }
 
   getUsername(name){
-    console.log("inside getUsername");
-    console.log("name is " + name)
     this.setState({ username: name });
   }
 
@@ -29,9 +27,11 @@ class App extends Component {
 
   render() {
     return(
-      <div>
-        <h1>Welcome to Chatterbox!</h1>
-        {this.state.username ? (<p>Hello {this.state.username}! What's on your mind today?</p>) : (<br />)}
+      <div className="userLogIn">
+        <header>
+          <h1>Welcome to Chatterbox!</h1>
+          {this.state.username ? (<p>Hello {this.state.username}! What's on your mind today?</p>) : (<br />)}
+        </header>
         {this.state.username ? (<MsgForm cb={this.sendMsgToDB} user={this.state.username}/>) : (<UserLogIn cb={this.getUsername} />)}
         {this.state.username ? (<Feed />) : <br />}
       </div>
