@@ -7,7 +7,6 @@ var Schema = mongoose.Schema;
 var UsersSchema = new Schema({
     username: {type: String, unique: true, lowercase: true},
     password: String,
-    timeline: [{ type: Schema.Types.ObjectId, ref: 'PublicChatRoom' }]
 });
 
 
@@ -38,4 +37,4 @@ UsersSchema.pre('save', function(next) {
 
 
 
-module.exports = mongoose.model('User', UsersSchema );
+//module.exports = mongoose.model('User', UsersSchema );
