@@ -13,7 +13,6 @@ class App extends Component {
       username: "",
       msgs: []
     }
-    this.saveMessage = this.saveMessage.bind(this);
     this.getUsername = this.getUsername.bind(this);
   }
 
@@ -23,23 +22,7 @@ class App extends Component {
     this.setState({ username: name });
   }
 
-  saveMessage(message) {
-    //make axios call
-    //to send msg to DB
-    console.log("the message is " + message);
-    
-    axios.post('/public', {
-      username: window.username,
-      message: message
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  }
+  
 
   componentDidMount(){
 
@@ -50,12 +33,14 @@ class App extends Component {
       <div>
         <h1>Welcome to Chatterbox!</h1>
         {this.state.username ? (<p>Hello {this.state.username}! What's on your mind today?</p>) : (<br />)}
-        {this.state.username ? (<MsgForm cb={this.saveMessage} />) : (<LogIn cb={this.getUsername} />)}
+        {this.state.username ? (<MsgForm cb={this.sendMsgToDB} user={this.state.username}/>) : (<LogIn cb={this.getUsername} />)}
+        {this.state.username ? (<Feed />) : <br />}
       </div>
 
     )
   }
 }
+
 
 ReactDOM.render(<App />, document.querySelector('.container'));
 

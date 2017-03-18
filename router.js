@@ -15,10 +15,8 @@ router.get('/public', function(req, res){
 
 router.post('/login', controller.createUser);
 
-router.post('/public', function(req, res){
-  console.log("inside /public POST");
-  console.log(req.body);
 
-});
+
+router.post('/public', controller.saveTheMessage);
 
 module.exports = router;

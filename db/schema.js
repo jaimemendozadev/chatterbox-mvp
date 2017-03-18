@@ -32,4 +32,13 @@ UsersSchema.pre('save', function(next) {
 });
 
 
+var MessagesSchema = new Schema({
+    username: {type: String, unique: true, lowercase: true},
+    password: String,
+});
+
+
+
+
+
 module.exports = mongoose.model('User', UsersSchema );
