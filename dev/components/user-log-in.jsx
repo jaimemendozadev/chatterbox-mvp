@@ -6,7 +6,7 @@ class UserLogIn extends Component {
   constructor(props){
     super(props)
     this.state = {
-      name: "Username",
+      name: "",
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,11 +34,8 @@ class UserLogIn extends Component {
       <p>What's your name? <br />
       Please enter a username to start using our app.</p>
       <form onSubmit={this.handleSubmit}>
-      
-        {/*<label>Username:</label>*/}
+        <label htmlFor="username">Username</label>
         <input value={this.state.name} onChange={this.handleUsername} name="username" required />
-
-        {/*<button type="submit">Submit</button>*/}
       </form>
       </div>
 
@@ -49,5 +46,10 @@ class UserLogIn extends Component {
 export default UserLogIn;
 
 
+
+/*
+  Icons made by Dave Gandy (http://www.flaticon.com/authors/dave-gandy) 
+  from Flaticon(http://www.flaticon.com), is licensed by Creative Commons BY 3.0
+*/
 
 

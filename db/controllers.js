@@ -34,7 +34,6 @@ var saveTheMessage = function(req, res) {
 }
 
 var getTheFeed = function(req, res){
-  console.log("Inside getTheFeed");
 
   PublicCRMsg.find({}, function(err, feed){
     if (err) {

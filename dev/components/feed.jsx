@@ -14,9 +14,7 @@ class Feed extends Component {
 
   getTheFeed(){
     axios.get('http://localhost:3000/feed')
-    .then( (response) => {
-      console.log(response.data);
-      
+    .then( (response) => {      
       this.setState({
         feed: response.data
       });
@@ -46,10 +44,12 @@ class Feed extends Component {
   }
 
   render() {
+  
     const mainFeed = this.state.feed;
     return(
       <div className="feed">
-        <h1>What the world is saying...</h1>
+        <h1>What the world is saying... <a onClick={this.getTheFeed} href=""><img id="refresh_svg" src="/output/image/refresh-page.svg" alt="refresh svg" /></a></h1> 
+        
         {mainFeed.map((post)=><Msg key={post["_id"]} content={post} />)}
 
 

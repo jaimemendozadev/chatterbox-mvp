@@ -10479,8 +10479,6 @@ var Feed = function (_Component) {
       var _this2 = this;
 
       axios.get('http://localhost:3000/feed').then(function (response) {
-        console.log(response.data);
-
         _this2.setState({
           feed: response.data
         });
@@ -10507,6 +10505,7 @@ var Feed = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+
       var mainFeed = this.state.feed;
       return _react2.default.createElement(
         'div',
@@ -10514,7 +10513,12 @@ var Feed = function (_Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'What the world is saying...'
+          'What the world is saying... ',
+          _react2.default.createElement(
+            'a',
+            { onClick: this.getTheFeed, href: '' },
+            _react2.default.createElement('img', { id: 'refresh_svg', src: '/output/image/refresh-page.svg', alt: 'refresh svg' })
+          )
         ),
         mainFeed.map(function (post) {
           return _react2.default.createElement(_msg2.default, { key: post["_id"], content: post });
@@ -10569,7 +10573,7 @@ var MsgForm = function (_Component) {
 
     _this.state = {
       username: _this.props.user,
-      msgToSend: "Message"
+      msgToSend: ""
     };
     _this.handleMsgState = _this.handleMsgState.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -10580,7 +10584,6 @@ var MsgForm = function (_Component) {
   _createClass(MsgForm, [{
     key: 'handleMsgState',
     value: function handleMsgState(event) {
-      console.log("event.target.value inside handleMsg is " + event.target.value);
       this.setState({
         msgToSend: event.target.value
       });
@@ -10626,7 +10629,12 @@ var MsgForm = function (_Component) {
       return _react2.default.createElement(
         'form',
         { onSubmit: this.handleSubmit },
-        _react2.default.createElement('input', { value: this.state.msgToSend, onChange: this.handleMsgState, type: 'text' })
+        _react2.default.createElement(
+          'label',
+          { htmlFor: 'message' },
+          'Message'
+        ),
+        _react2.default.createElement('input', { name: 'message', value: this.state.msgToSend, onChange: this.handleMsgState, type: 'text' })
       );
     }
   }]);
@@ -10674,7 +10682,7 @@ var UserLogIn = function (_Component) {
     var _this = _possibleConstructorReturn(this, (UserLogIn.__proto__ || Object.getPrototypeOf(UserLogIn)).call(this, props));
 
     _this.state = {
-      name: "Username"
+      name: ""
     };
 
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -10710,6 +10718,11 @@ var UserLogIn = function (_Component) {
         _react2.default.createElement(
           'form',
           { onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'username' },
+            'Username'
+          ),
           _react2.default.createElement('input', { value: this.state.name, onChange: this.handleUsername, name: 'username', required: true })
         )
       );
@@ -10720,6 +10733,11 @@ var UserLogIn = function (_Component) {
 }(_react.Component);
 
 exports.default = UserLogIn;
+
+/*
+  Icons made by Dave Gandy (http://www.flaticon.com/authors/dave-gandy) 
+  from Flaticon(http://www.flaticon.com), is licensed by Creative Commons BY 3.0
+*/
 
 /***/ }),
 /* 97 */
@@ -11577,7 +11595,6 @@ function lookForLinks(msg) {}
 function Msg(_ref) {
   var content = _ref.content;
 
-  //console.log("the props are " + JSON.stringify(props.content));  
   return _react2.default.createElement(
     "div",
     { className: "tlMessage" },
@@ -11597,10 +11614,6 @@ function Msg(_ref) {
 }
 
 exports.default = Msg;
-
-/*
-  {"_id":"58cd3fce7e103f5ab7a31e43","message":"You should really watch this video: https://www.youtube.com/watch?v=4r1tq1XBN0w","date":"03/18/2017","username":"jmendoza","__v":0}
-*/
 
 /***/ }),
 /* 115 */
@@ -23878,8 +23891,7 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      username: "",
-      msgs: []
+      username: ""
     };
     _this.getUsername = _this.getUsername.bind(_this);
     return _this;
@@ -23891,11 +23903,9 @@ var App = function (_Component) {
       this.setState({ username: name });
     }
   }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
     key: 'render',
     value: function render() {
+      var signalToRefresh = this.state.refreshFeed;
       return _react2.default.createElement(
         'div',
         { className: 'userLogIn' },

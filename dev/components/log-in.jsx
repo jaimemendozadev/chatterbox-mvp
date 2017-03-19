@@ -17,7 +17,6 @@ class LogIn extends Component {
   }
 
   handleSubmit(event){
-    console.log("inside handleSubmit for log-in page");
     event.preventDefault();
     axios.post('http://localhost:3000/login', {
       username: this.state.username,

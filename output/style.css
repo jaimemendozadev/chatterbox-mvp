@@ -1,6 +1,13 @@
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+}
+
+#refresh_svg {
+  width: 25px;
+  height: 25px;
+  margin-left: 1em;
+
 }
 
 .container {
@@ -37,10 +44,18 @@ header {
 
 }
 
+label {
+  margin-right: 1em;
+}
 
+input:required {
+  width: 50%;
+  border: 1px solid #808080;
 
+}
 input[type=text] {
     width: 50%;
+    border: 1px solid #808080;
 }
 
 form {
@@ -64,9 +79,6 @@ span.userInfo {
   height: auto;
   padding: 1em;
   margin: 1em auto;
-
-  
-
 
 }
 

@@ -9,8 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      username: "",
-      msgs: []
+      username: ""
     }
     this.getUsername = this.getUsername.bind(this);
   }
@@ -19,13 +18,8 @@ class App extends Component {
     this.setState({ username: name });
   }
 
-  
-
-  componentDidMount(){
-
-  }
-
   render() {
+    var signalToRefresh = this.state.refreshFeed;
     return(
       <div className="userLogIn">
         <header>

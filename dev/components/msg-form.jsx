@@ -8,7 +8,7 @@ class MsgForm extends Component {
     super(props);
     this.state = {
       username: this.props.user,
-      msgToSend: "Message"
+      msgToSend: ""
     };
     this.handleMsgState = this.handleMsgState.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,6 @@ class MsgForm extends Component {
   }
 
   handleMsgState(event) {
-    console.log("event.target.value inside handleMsg is " + event.target.value);
     this.setState({
       msgToSend: event.target.value
     });
@@ -64,9 +63,9 @@ class MsgForm extends Component {
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
-        <input value={this.state.msgToSend} onChange={this.handleMsgState} type="text" />
+        <label htmlFor="message">Message</label>
+        <input name="message" value={this.state.msgToSend} onChange={this.handleMsgState} type="text" />
         
-        {/*<input type="submit" value="Submit" />*/}
       </form>
     )
   }
