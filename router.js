@@ -3,8 +3,10 @@ var router = express.Router();
 var controller = require('./db/controllers.js');
 
 
-
-router.get('/public', function(req, res){
+/* deleted '/public' route. will reinstate 
+as soon as additional chatroom functionality 
+is implemented */
+router.get('/', function(req, res){
 
   console.log("Launch of server");
   //commented out line also works
@@ -13,10 +15,11 @@ router.get('/public', function(req, res){
    
 });
 
+
 //Comment out until further notice
 //router.post('/login', controller.createUser);
 
-router.post('/public', controller.saveTheMessage);
+router.post('/', controller.saveTheMessage);
 
 router.get('/feed', controller.getTheFeed);
 

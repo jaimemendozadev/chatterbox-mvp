@@ -22,7 +22,7 @@ When you run these commands in the Terminal, please don't include the $ dollar s
   - `$ npm install` to install the npm dependencies in the `package.json` file. Please be patient, it'll take awhile to load the dependencies.
   - `$ npm start` to start the server on `localhost:3000`.
   - `$ npm run build` to build all the React components.
-- Navigate to [http://localhost:3000/public](http://localhost:3000/public) on your favorite web browser to be directed to the login page.
+- Navigate to [http://localhost:3000/](http://localhost:3000/) on your favorite web browser to be directed to the login page.
 
 *A friendly reminder, the `dev/` folder has all the project React components in JSX form. Every time you modify/change any of these files, you'll have to run `$ npm run build` in the Terminal to rebuild the React components.
 
