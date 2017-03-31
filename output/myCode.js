@@ -10517,7 +10517,7 @@ var Feed = function (_Component) {
           _react2.default.createElement(
             'a',
             { onClick: this.getTheFeed, href: '' },
-            _react2.default.createElement('img', { id: 'refresh_svg', src: '/output/image/refresh-page.svg', alt: 'refresh svg' })
+            _react2.default.createElement('img', { id: 'refresh_svg', src: 'image/refresh-page.svg', alt: 'refresh svg' })
           )
         ),
         mainFeed.map(function (post) {

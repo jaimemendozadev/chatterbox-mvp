@@ -18,7 +18,23 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 //Still not sure why this commented out line doesn't work
 //app.use(express.static(path.join(__dirname, 'output')));
-app.use('/output', express.static(__dirname + '/output') );
+
+//old static route code
+//app.use('/output', express.static(__dirname + '/output') );
+
+
+/*
+  3/31/17 Update:
+
+  Fixed router to serve index.html file from output folder.
+  Side effect: App renders HTML, but doesn't sent data to DB.
+   
+*/
+
+app.use(express.static(path.join(__dirname, 'output')) );
+
+
+
 app.use(router);
 
 
